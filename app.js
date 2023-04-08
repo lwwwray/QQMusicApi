@@ -18,6 +18,26 @@ const feedback = new Feedback();
 const cache = new Cache();
 const globalCookie = GlobalCookie();
 
+const cors = require('cors');
+
+app.use(cors({
+  origin: '*'
+}));
+
+// app.use(cors({
+//   origin: function (req, callback) {
+//     const allowlist = [
+//       'http://example1.com',
+//       'http://example2.com'
+//     ];
+//     const origin = req.headers.origin;
+//     if (allowlist.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   }
+// }));
 
 // 每10分钟存一下数据
 config.useDataStatistics && setInterval(() => dataHandle.saveInfo(), 60000 * 10);

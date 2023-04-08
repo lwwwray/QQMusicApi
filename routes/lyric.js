@@ -30,8 +30,10 @@ module.exports = {
       }
     });
 
-    result.lyric = Base64.Base64.decode(result.lyric);
-    result.trans = Base64.Base64.decode(result.trans || '');
+    if(result.code === 0){
+      result.lyric = Base64.Base64.decode(result.lyric);
+      result.trans = Base64.Base64.decode(result.trans || '');
+    }
     if (Number(raw)) {
       res.send(result);
     } else {
